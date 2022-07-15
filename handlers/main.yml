@@ -1,0 +1,7 @@
+---
+- name: restartRport
+  ansible.builtin.systemd:
+    name: rport.service
+    state: restarted
+    daemon_reload: true
+...
