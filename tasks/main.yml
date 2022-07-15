@@ -16,6 +16,16 @@
   tags:
     - client
 
+- name: set sudoers
+  ansible.builtin.template:
+    src: rport-nopasswd.j2
+    dest: /etc/sudoers.d/rport-nopasswd
+    mode: 0440
+    owner: root
+    group: root
+  tags:
+    - client
+
 - name: rport Config /etc
   ansible.builtin.file:
     path: "{{ rport_config_path }}"

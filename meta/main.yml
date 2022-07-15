@@ -1,0 +1,37 @@
+---
+galaxy_info:
+  role_name: rport
+  author: kenael
+  description: Basic setup of Rport Client
+
+  license: MIT
+
+  min_ansible_version: '2.4'
+
+  platforms:
+    - name: Debian
+      versions:
+        - stretch
+        - buster
+    - name: Raspbian
+      versions:
+        - 10.11
+        - 8.0
+        - 9.13
+        - 11.3
+        - 11.4
+    - name: Ubuntu
+      versions:
+        - 20.04
+        - 22.04
+  galaxy_tags:
+    - raspberry
+    - pi
+    - raspberrypi
+    - raspbian
+    - setup
+    - Debian
+    - Ubuntu
+
+dependencies: []
+...
