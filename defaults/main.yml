@@ -19,4 +19,5 @@ rport_updates_interval: 4h
 rport_log_file: /var/log/rport/rport.log
 rport_log_level: error
 
+# rport_fingerprint: 
 ...
