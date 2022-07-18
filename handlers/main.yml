@@ -3,5 +3,6 @@
   ansible.builtin.systemd:
     name: rport.service
     state: restarted
+    enabled: true
     daemon_reload: true
 ...

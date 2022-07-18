@@ -75,5 +75,6 @@
   ansible.builtin.systemd:
     name: rport.service
     state: started
-  
+    enabled: true
+
 ...
