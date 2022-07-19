@@ -20,4 +20,6 @@ rport_log_file: /var/log/rport/rport.log
 rport_log_level: error
 
 # rport_fingerprint: 
+
+rport_version: '0.8.0'
 ...

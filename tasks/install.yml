@@ -1,0 +1,27 @@
+---
+- name: debug
+  ansible.builtin.debug:
+    msg: "{{ ansible_system }} {{ ansible_architecture[:5] }}"
+
+- name: hack aarch64
+  ansible.builtin.set_fact:
+    ansible_architecture: arm64
+  when: ansible_architecture == "aarch64"
+
+- name: Download rport
+  ansible.builtin.get_url:
+    url: "https://download.rport.io/rport/stable/?arch={{ ansible_system }}_{{ ansible_architecture[:5] }}"
+    dest: "/opt/rport_latest_{{ ansible_system }}_{{ ansible_architecture[:5] }}.tgz"
+    mode: 0755
+    owner: root
+    group: root
+
+- name: extract rport
+  ansible.builtin.command:
+    creates: /usr/local/bin/rport
+    chdir: /opt
+    cmd: >
+      tar xzf "/opt/rport_latest_{{ ansible_system }}_{{ ansible_architecture[:5] }}.tgz" \
+        -C /usr/local/bin rport
+
+...
