@@ -172,8 +172,9 @@
   ## The filter is applied to the command sent. Full path must be used.
   ## See {order} parameter for more details how it's applied together with {deny}.
   ## Defaults: ['^/usr/bin/.*','^/usr/local/bin/.*','^C:\\Windows\\System32\\.*']
-  allow = ['^/bin/.*','^/usr/bin/.*','^/sbin/.*','^/usr/local/bin/.*','^C:\\Windows\\System32\\.*']
-
+  {% if rport_allow is defined %}allow = [{%for k in rport_allow %}'{{ k }}',{% endfor %}]
+  {% else %}allow = ['^/bin/.*','^/usr/bin/.*','^/sbin/.*','^/usr/local/bin/.*','^C:\\Windows\\System32\\.*']
+  {% endif %}
   ## Deny commands matching one of the following regular expressions.
   ## The filter is applied to the command sent. Full path must be used.
   ## See {order} parameter for more details how it's applied together with {allow}.

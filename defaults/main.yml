@@ -4,7 +4,7 @@ rportd_server: 192.168.0.15:8080
 rport_client_auth: admin:pass1234
 
 # rport_tags: []
-
+# rport_allow: []
 rport_config_path: /etc/rport
 rport_log_path: /var/log/rport
 rport_data_dir: /var/lib/rport
@@ -19,7 +19,7 @@ rport_updates_interval: 4h
 rport_log_file: /var/log/rport/rport.log
 rport_log_level: error
 
-# rport_fingerprint: 
+# rport_fingerprint:
 
 rport_version: '0.8.0'
 ...
