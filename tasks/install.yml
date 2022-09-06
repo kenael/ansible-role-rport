@@ -15,6 +15,7 @@
     mode: 0755
     owner: root
     group: root
+    validate_certs: "{{ rport_cert_validate }}"
 
 - name: extract rport
   ansible.builtin.command:
