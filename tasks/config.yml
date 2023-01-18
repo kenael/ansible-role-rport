@@ -39,6 +39,14 @@
     - "{{ rport_log_path }}"
     - "{{ rport_data_dir }}"
 
+- name: rport Script Path
+  ansible.builtin.file:
+    path: "{{ rport_script_dir }}"
+    owner: "{{ rport_user }}"
+    group: "{{ rport_group }}"
+    mode: 0700
+    state: directory
+
 - name: set Template
   ansible.builtin.template:
     src: rport.conf.j2

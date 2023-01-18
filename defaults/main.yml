@@ -8,6 +8,7 @@ rport_client_auth: admin:pass1234
 rport_config_path: /etc/rport
 rport_log_path: /var/log/rport
 rport_data_dir: /var/lib/rport
+rport_script_dir: /var/lib/rport/scripts
 
 rport_user: rport
 rport_group: "{{ rport_user }}"
