@@ -1,28 +1,31 @@
 ---
-- name: debug
+- name: Debug
   ansible.builtin.debug:
-    msg: "{{ ansible_system }} {{ ansible_architecture[:5] }}"
+    msg: "{{ ansible_system }} {{ ansible_architecture }}"
 
-- name: hack aarch64
+- name: Hack aarch64
   ansible.builtin.set_fact:
     ansible_architecture: arm64
   when: ansible_architecture == "aarch64"
 
+- name: Convert armv6
+  ansible.builtin.set_fact:
+    ansible_architecture: armv6
+  when: ansible_architecture == "armv6l"
+
+- name: Convert armv7
+  ansible.builtin.set_fact:
+    ansible_architecture: armv7
+  when: ansible_architecture == "armv7l"
+
 - name: Download rport
   ansible.builtin.get_url:
-    url: "https://download.rport.io/rport/stable/?arch={{ ansible_system }}_{{ ansible_architecture[:5] }}"
-    dest: "/opt/rport_latest_{{ ansible_system }}_{{ ansible_architecture[:5] }}.tgz"
+    url: "{{ rport_download_url }}/{{ rport_version }}/rport_{{ rport_version }}_{{ ansible_system }}_{{ ansible_architecture }}.tar.gz"
+    dest: "/opt/rport_{{ rport_version }}_{{ ansible_architecture }}.tgz"
     mode: 0755
     owner: root
     group: root
     validate_certs: "{{ rport_cert_validate }}"
-
-- name: extract rport
-  ansible.builtin.command:
-    creates: /usr/local/bin/rport
-    chdir: /opt
-    cmd: >
-      tar xzf "/opt/rport_latest_{{ ansible_system }}_{{ ansible_architecture[:5] }}.tgz" \
-        -C /usr/local/bin rport
+  notify: ExtractRport
 
 ...

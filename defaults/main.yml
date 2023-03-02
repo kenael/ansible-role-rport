@@ -2,7 +2,7 @@
 rportd_server: 192.168.0.15:8080
 
 rport_client_auth: admin:pass1234
-
+rport_download_url: https://github.com/cloudradar-monitoring/rport/releases/download
 # rport_tags: []
 # rport_allow: []
 rport_config_path: /etc/rport
@@ -22,7 +22,7 @@ rport_log_level: error
 
 # rport_fingerprint:
 
-rport_version: '0.8.0'
+rport_version: '0.9.5'
 
 rport_cert_validate: true
 ...

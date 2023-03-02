@@ -1,8 +1,17 @@
 ---
+- name: ExtractRport
+  ansible.builtin.unarchive:
+    src: "/opt/rport_{{ rport_version }}_{{ ansible_architecture }}.tgz"
+    remote_src: true
+    include: rport
+    dest: /usr/local/bin
+  notify: restartRport
+
 - name: restartRport
   ansible.builtin.systemd:
     name: rport.service
     state: restarted
     enabled: true
     daemon_reload: true
+
 ...
