@@ -25,4 +25,9 @@ rport_log_level: error
 rport_version: '0.9.5'
 
 rport_cert_validate: true
+
+rport_system_id: "true"
+rport_hostname: "true"
+
+# rport_client_name: vm_name_1
 ...
